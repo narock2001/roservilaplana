@@ -1,0 +1,7 @@
+extends templates/layout
+
+block section
+  - const main = data["main"];
+  div
+    p My name is Nahuel Diaz
+    p!= main.me

@@ -1,0 +1,11 @@
+$text: #646464;
+$red: red;
+$white: white;
+$blueOpa: rgba(3, 20, 255, 0.5);
+$green: rgb(50, 205, 50);
+$greenOpa: rgba(50, 205, 50, 0.2);
+
+.color--red {
+  color: $red;
+  font-weight: bold;
+}

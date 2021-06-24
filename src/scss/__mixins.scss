@@ -1,0 +1,29 @@
+@mixin bp($point) {
+  @if $point == mobile {
+      @media (max-width: 600px)  { @content ; }
+  }
+  @else if $point == ipadV {
+      @media (min-width: 601px) and (max-width:1023px) { @content ; }
+  }
+  @else if $point == ipadV&Mob {
+    @media (max-width:1023px) { @content ; }
+  }
+  @else if $point == ipadH {
+      @media (min-width: 1024px) and (max-width:1279px) { @content ; }
+  }
+  @else if $point == desktop {
+     @media (min-width:1280px) { @content ; }
+  }
+}
+
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+     object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+       object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}

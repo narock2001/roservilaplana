@@ -1,0 +1,62 @@
+@mixin prefix($attr,$val){
+	-webkit-#{$attr}: $val;
+    -moz-#{$attr}: $val;
+    -ms-#{$attr}: $val;
+    -o-#{$attr}: $val;
+    #{$attr}: $val;
+}
+@mixin transition($transition...) {
+    @include prefix(transition,$transition);
+}
+
+// Burger icon
+#burger {
+	position: relative;
+	height: 30px;
+	width: 30px;
+	cursor: pointer;
+	div	{
+		position:absolute;
+		left:0;
+		width:100%;
+		height:1px;
+		background-color:rgba(0,0,0,0.9);
+		outline: 1px solid transparent;
+		transform-origin: 0px 0px;
+	}
+	.n1{
+		top:20%;
+		@include transition(top 1000ms ease 50ms, transform 1000ms ease 50ms, background-color 1s ease 50ms);
+	}
+	.n2{top:48%;
+		@include transition(opacity 500ms linear 500ms, background-color 1s ease);
+	}
+	.n3{top:76%;
+           @include transition(top 1000ms ease 50ms, transform 1000ms ease 50ms, background-color 1s ease 50ms);}
+	&.active{
+		.n1{
+			top:0px;
+			@include transition(top 1000ms ease 50 ms, transform 1000ms ease, background-color 1s ease);
+            /*
+                Scale 1.4142: make long as the hypotenuse
+                rotate3d is clear
+                translateY -50% to correct the width of the cross
+            */
+            transform: rotate3d(0,0,1,45deg) scale3d(1.4142, 1.2, 1) translate3d(0,-50%,0);
+		}
+		.n2{
+			@include transition(top 1000ms ease 50ms,opacity 50ms linear, background-color 1s ease 50ms);
+			opacity:0;
+		}
+		.n3{
+			top:100%;
+            /*
+                Scale 1.4142: make long as the hypotenuse
+                rotate3d is clear
+                translateY -50% to correct the width of the cross
+            */
+			transform: rotate3d(0,0,1,-45deg) scale3d(1.4142, 1.2, 1) translate3d(0,-50%,0);
+			@include transition(top 1000ms ease 50ms, transform 1000ms ease, background-color 1s ease);
+		}
+	}
+}
